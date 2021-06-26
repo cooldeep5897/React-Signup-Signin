@@ -1,55 +1,42 @@
-import { element } from "prop-types";
 import React,{ useState } from "react";
 
 const Login=()=>{
-    const[userRegistration,setUserRegistration]= useState({
-        Email:"",
-        Password:""
-   });
+    const [email,setEmail]= useState("");
+    const [password,setPassword]= useState("");
 
-   const [records,setRecords]=useState([]);
+   const [allEntry,setAllEntry]=useState([]);
 
-    const handelInput =(e)=>{
-        const name=e.target.name;
-        const value=e.target.value;
-        console.log(name,value);
+   const submitForm=(e)=>{
+       e.preventDefault();
+        const newEntry={email:email,password:password};
 
-        setUserRegistration({...userRegistration,[name]:value});
-
-    }
-
-    const handelSubmit=(e)=>{
-        e.preventDefault();
-
-        const newRecord ={...userRegistration}
-        setRecords([...records,newRecord]);
-        console.log(records);
-        setUserRegistration({Email:"",Password:"" });
-
-    }
+        setAllEntry([...allEntry,newEntry]);
+        console.log(allEntry);
+   }
 
     return(
         <div>
             <h1>***** Login *****</h1>
-            <form action="" onSubmit={handelSubmit}>
-            <lable name="Email">Email</lable>
+            <form action="" onSubmit={submitForm}>
+            <lable name="email">Email</lable>
             <input type="email" autoComplete="off" name="Email"
-            value={userRegistration.Email}
-            onChange={handelInput}
+            value={email}
+            onChange={(e)=>setEmail(e.target.value)}
             /><br></br>
-            <lable name="Password">Password </lable>
+            <lable name="password">Password </lable>
             <input type="password" autoComplete="off"  name="Password"
-            value={userRegistration.Password}
-            onChange={handelInput} 
+            value={password}
+            onChange={(e)=>setPassword(e.target.value)}
             /><br></br>
             <button type="submit">Sign Up</button>
         </form>
         <div>
-        {   records.map((element)=>{
-                return (<div style={{margin:"auto"}}key={element.Email} >
-                    <p style={{margin:"auto"}}>{element.Email}</p>
-                    <p style={{margin:"auto"}}>{element.Password}</p>
-                </div>)
+        {   allEntry.map((element)=>{
+                return (<div style={{margin:"auto"}}key={element.email} >
+                            <p style={{margin:"auto"}}>{element.email}</p>
+                            <p style={{margin:"auto"}}>{element.password}</p>
+                        </div>
+                )
         })}
         </div>
         </div>
