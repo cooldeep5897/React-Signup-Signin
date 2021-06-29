@@ -32,30 +32,33 @@ const MultipleInputs=()=>{
     }
 
     return(
-    <div>
-        <h1>***** Sign Up *****</h1>
-        <form action="" onSubmit={handelSubmit}>
-            <lable name="FirstName">FirstName </lable>
-            <input type="text" autoComplete="off" name="FirstName"
+    <div  className="user">
+       <header className="user__header"> <h1 class="user__title">***** Sign Up *****</h1></header>
+        <form className="form" action="" onSubmit={handelSubmit}>
+        <div class="form__group">
+            <input className='form__input' placeholder="FirstName"  type="text" autoComplete="off" name="FirstName"
             value={userRegistration.FirstName}
             onChange={handelInput}
-            /><br></br>
-            <lable name="LastName">LastName </lable>
-            <input type="text"  autoComplete="off" name="LastName"
+            />
+            </div>
+            <div class="form__group">
+            <input className='form__input' placeholder="LastName" type="text"  autoComplete="off" name="LastName"
             value={userRegistration.LastName}
             onChange={handelInput}
-            /><br></br>
-            <lable name="Email">Email</lable>
-            <input type="email" autoComplete="off" name="Email"
+            /></div>
+            <div class="form__group">
+            <input className='form__input' placeholder="Email" type="email" autoComplete="off" name="Email"
             value={userRegistration.Email}
             onChange={handelInput}
-            /><br></br>
-            <lable name="Password">Password </lable>
-            <input type="password" autoComplete="off"  name="Password"
+            />
+            </div>
+            <div class="form__group">
+            <input className='form__input' placeholder="Password" type="password" autoComplete="off"  name="Password"
             value={userRegistration.Password}
             onChange={handelInput} 
-            /><br></br>
-            <button type="submit">Sign Up</button>
+            />
+            </div>
+            <button class="btn" type="submit">Sign Up</button>
         </form>
         <div>
                     {
